@@ -1,13 +1,13 @@
-import PlantItem from "./plants/PlantItem";
 import { useState } from "react";
 import PLANTS from "./data";
+import PlantList from "./plants/PlantList";
 
 const App = () => {
   return (
     <section>
       <h1>Proper Plants</h1>
       <section>
-        <PlantItem individualPlant={PLANTS[0]} />
+        <PlantList plants={PLANTS} />
       </section>
     </section>
   );
