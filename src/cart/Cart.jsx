@@ -1,12 +1,16 @@
 import CartItem from "./CartItem";
 
-const Cart = ({ items }) => {
+const Cart = ({ items, changeQuantity }) => {
   return (
     <section>
       <h2>Cart</h2>
       <ul>
         {items.map((item) => (
-          <CartItem key={item.id} individualCartItem={item} />
+          <CartItem
+            key={item.id}
+            individualCartItem={item}
+            changeQuantity={changeQuantity}
+          />
         ))}
       </ul>
     </section>

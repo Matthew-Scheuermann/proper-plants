@@ -1,10 +1,10 @@
-const CartItem = ({ individualCartItem }) => {
+const CartItem = ({ individualCartItem, changeQuantity }) => {
   const increaseQuantity = () => {
-    console.log("increase by 1");
+    changeQuantity(individualCartItem.id, 1);
   };
 
   const decreaseQuantity = () => {
-    console.log("decrease by 1");
+    changeQuantity(individualCartItem.id, -1);
   };
   return (
     <li>
