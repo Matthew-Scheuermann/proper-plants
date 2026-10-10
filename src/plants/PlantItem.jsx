@@ -1,6 +1,6 @@
-const PlantItem = ({ individualPlant }) => {
+const PlantItem = ({ individualPlant, addToCart }) => {
   const addPlant = () => {
-    console.log("add to cart");
+    addToCart(individualPlant);
   };
 
   return (

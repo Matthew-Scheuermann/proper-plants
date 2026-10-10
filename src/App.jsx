@@ -4,18 +4,33 @@ import PlantList from "./plants/PlantList";
 import Cart from "./cart/Cart";
 
 const App = () => {
-  const testArray = [
-    { id: 1, image: "🌿", name: "Fern", quantity: 3 },
-    { id: 2, image: "🌿", name: "Leaf", quantity: 5 },
-    { id: 3, image: "🌿", name: "Pine Needle", quantity: 1 },
-  ];
+  const [shoppingCart, setShoppingCart] = useState([]);
+
+  const addToCart = (plant) => {
+    const alreadyInCart = shoppingCart.some((item) => item.id === plant.id);
+
+    if (!alreadyInCart) {
+      const newItem = { ...plant, quantity: 1 };
+      setShoppingCart([...shoppingCart, newItem]);
+    } else {
+      const updatedCart = shoppingCart.map((item) => {
+        if (item.id === plant.id) {
+          return { ...item, quantity: item.quantity + 1 };
+        } else {
+          return item;
+        }
+      });
+      setShoppingCart(updatedCart);
+    }
+  };
+
   return (
     <section>
       <h1>Proper Plants</h1>
       <section>
-        <PlantList plants={PLANTS} />
+        <PlantList plants={PLANTS} addToCart={addToCart} />
 
-        <Cart items={testArray} />
+        <Cart items={shoppingCart} />
       </section>
     </section>
   );
